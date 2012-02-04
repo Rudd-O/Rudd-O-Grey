@@ -43,6 +43,7 @@ set -e
 echo Installing theme to Plymouth themes directory
 sudo rm -rf /usr/share/plymouth/themes/Rudd-O-Grey/
 sudo cp -R "$DIR" /usr/share/plymouth/themes/Rudd-O-Grey/
+sudo rm -rf /usr/share/plymouth/themes/Rudd-O-Embossed/.git
 sudo chown root.root -R /usr/share/plymouth/themes/Rudd-O-Grey/
 
 echo "Setting theme as default and rebuilding initial RAM disk"
