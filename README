@@ -46,10 +46,12 @@ sudo cp -R "$DIR" /usr/share/plymouth/themes/Rudd-O-Grey/
 sudo chown root.root -R /usr/share/plymouth/themes/Rudd-O-Grey/
 
 echo "Setting theme as default and rebuilding initial RAM disk"
-sudo plymouth-set-default-theme Rudd-O-Grey -R
+sudo plymouth-set-default-theme Rudd-O-Grey -R < /dev/null
 
+if [ -n "$DISPLAY" ] ; then
 echo "Setting your GNOME wallpaper to the theme wallpaper"
 dconf write /org/gnome/desktop/background/picture-uri "'file:///usr/share/plymouth/themes/Rudd-O-Grey/wallpaper.png'"
+fi
 
 echo Copying theme-specific GDM display manager settings to /etc
 sudo cp "$DIR"/10-rudd-o-grey-settings /etc/dconf/db/gdm.d/
